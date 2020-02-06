@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.spdb.build.gef.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.spdb.build.gef.Perspective"
+            name="RCP Perspective"
+            id="com.spdb.build.gef.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.spdb.build.gef.editor.MyGraphicalEditor"
+            contributorClass="com.spdb.build.gef.contributor.MyGraphicalEditorActionBarContributor"
+            default="false"
+            id="WBHGEF.mygraphicaleditor"
+            name="MyGraphicalEitory">
+      </editor>
+   </extension>
+
+</plugin>
