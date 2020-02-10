@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * 重命名向导页
+ * 重命名向导页  由{ @link RenameWizard}向导调用
  * @author exphuhong
  *
  */

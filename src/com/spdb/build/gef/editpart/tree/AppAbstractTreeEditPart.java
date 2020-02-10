@@ -16,6 +16,11 @@ import org.eclipse.ui.PlatformUI;
 
 import com.spdb.build.gef.model.Node;
 
+/**
+ * 大纲视图中的树形editPart 由{ @link EmployeeTreeEditPart EnterpriseTreeEditPart ServiceTreeEditPart 继承}
+ * @author exphuhong
+ *
+ */
 public class AppAbstractTreeEditPart extends AbstractTreeEditPart implements PropertyChangeListener{
 
 	@Override

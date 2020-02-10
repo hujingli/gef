@@ -11,9 +11,17 @@ import org.eclipse.ui.PlatformUI;
  */
 public class Application implements IApplication {
 
+	/**
+	 * 1、RCP启动之后会调用start方法
+	 * 
+	 * 工作台启动之后会处于持续打开状态  来处理用户的一系列操作事件  如鼠标点击  键盘等，知道工作台关闭   又称为事件循环
+	 */
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
 		Display display = PlatformUI.createDisplay();
+		
+		// 工作台打开之前可以在此处做一些处理
+		
 		try {
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
 			if (returnCode == PlatformUI.RETURN_RESTART)

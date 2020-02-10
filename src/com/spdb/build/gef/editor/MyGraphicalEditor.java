@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.EventObject;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -22,7 +21,6 @@ import org.eclipse.gef.editparts.ScalableRootEditPart;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
-import org.eclipse.gef.palette.CreationToolEntry;
 import org.eclipse.gef.palette.MarqueeToolEntry;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
@@ -34,11 +32,9 @@ import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gef.ui.actions.ZoomInAction;
 import org.eclipse.gef.ui.actions.ZoomOutAction;
 import org.eclipse.gef.ui.parts.ContentOutlinePage;
-import org.eclipse.gef.ui.parts.GraphicalEditor;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithPalette;
 import org.eclipse.gef.ui.parts.TreeViewer;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ResourceLocator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -68,7 +64,7 @@ import com.spdb.build.gef.model.line.ArrowConnectioinModel;
 import com.spdb.build.gef.model.line.PlainConnectionModel;
 
 /**
- * 图形编辑器
+ * 图形编辑器  (需要在plugin.xml文件中进行配置添加扩展点editors 然后在ApplicationWorkbenchAdvisor的postStartup方法中添加)
  * @author huh20
  *
  */
@@ -91,7 +87,7 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		model = createEnterprise();
 		viewer.setContents(model);
 		
-		// 添加拖放监听器
+		// 添加拖放目标监听器
 		viewer.addDropTargetListener(new MyTemplateTransferDropTargetListener(viewer));
 	}
 
@@ -109,6 +105,7 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		// 设置自定义的editpart工厂对象
 		viewer.setEditPartFactory(new AppEditPartFactory());
 		
+		// 设置图形缩放
 		double[] zoomLevels = new double[] {
 				0.25, .05, 0.75, 1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 10.0, 20.0
 		};
@@ -149,7 +146,7 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 	}
 	
 	/**
-	 * 该方法用于检验嵌套类的调用
+	 * 该方法用于检验嵌套类的调用 如下面定义的大纲视图
 	 */
 	public Object getAdapter(Class type) {
 		if(type == ZoomManager.class) {
@@ -162,6 +159,9 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		
 	}
 	
+	/**
+	 * 将自定义的action进行注册
+	 */
 	@Override
 	protected void createActions() {
 		super.createActions();
@@ -269,7 +269,10 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		}
 		
 		public void createControl(Composite parent) {
+			
+			// 创建窗框对象 分割窗体
 			sash = new SashForm(parent, SWT.VERTICAL);
+			
 			getViewer().createControl(sash);
 			getViewer().setEditDomain(getEditDomain());
 			getViewer().setEditPartFactory(new AppTreeEditPartFactory());
@@ -277,6 +280,7 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 			
 			getSelectionSynchronizer().addViewer(getViewer());
 			
+			// 添加鸟瞰图
 			Canvas canvas = new Canvas(sash, SWT.BORDER);
 			LightweightSystem lwSystem = new LightweightSystem(canvas);
 			scrollableThumbnail = new ScrollableThumbnail(
@@ -394,9 +398,14 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		return root;
 	}
 	
+	/**
+	 * 初始化画图板
+	 */
 	@Override
 	protected void initializePaletteViewer() {
 		super.initializePaletteViewer();
+		
+		// 给画图板添加拖放源
 		getPaletteViewer().addDragSourceListener(new TemplateTransferDragSourceListener(getPaletteViewer()));
 	}
 	

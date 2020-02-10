@@ -13,6 +13,11 @@ import com.spdb.build.gef.model.Enterprise;
 import com.spdb.build.gef.model.Node;
 import com.spdb.build.gef.model.Service;
 
+/**
+ * 树形大纲 editPart 由 { @link AppTreeEditPartFactory }此工厂进行创建
+ * @author exphuhong
+ *
+ */
 public class ServiceTreeEditPart extends AppAbstractTreeEditPart{
 
 	protected List<Node> getModelChildren() {

@@ -6,6 +6,11 @@ import java.util.List;
 import com.spdb.build.gef.model.Enterprise;
 import com.spdb.build.gef.model.Node;
 
+/**
+ * 树形大纲 editPart 由 { @link AppTreeEditPartFactory }此工厂进行创建
+ * @author exphuhong
+ *
+ */
 public class EnterpriseTreeEditPart extends AppAbstractTreeEditPart{
 
 	protected List<Node> getModelChildren() {

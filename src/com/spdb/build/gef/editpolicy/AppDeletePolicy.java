@@ -7,6 +7,13 @@ import org.eclipse.gef.requests.GroupRequest;
 import com.spdb.build.gef.command.DeleteCommand;
 import com.spdb.build.gef.model.Node;
 
+/**
+ * 调用删除命令 {@link DeleteCommand}
+ * 
+ * policy在 {@link ServiceEditpart.class}
+ * @author exphuhong
+ *
+ */
 public class AppDeletePolicy extends ComponentEditPolicy{
 
 	@Override

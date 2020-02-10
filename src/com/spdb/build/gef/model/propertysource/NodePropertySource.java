@@ -16,7 +16,7 @@ import com.spdb.build.gef.model.Node;
 import com.spdb.build.gef.model.Service;
 
 /**
- * 属性源
+ * 属性源 {@link Node#getAdapter(Class)}方法中调用
  * @author exphuhong
  *
  */

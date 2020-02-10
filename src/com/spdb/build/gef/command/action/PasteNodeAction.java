@@ -9,6 +9,11 @@ import org.eclipse.ui.actions.ActionFactory;
 
 import com.spdb.build.gef.command.PasteNodeCommand;
 
+/**
+ * 粘贴action  { @link MyGraphicalEditor#createActions}方法中注册
+ * @author exphuhong
+ *
+ */
 public class PasteNodeAction extends SelectionAction{
 
 	public PasteNodeAction(IWorkbenchPart part) {

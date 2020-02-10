@@ -11,6 +11,11 @@ import com.spdb.build.gef.command.ReconnectTargetCommand;
 import com.spdb.build.gef.model.Service;
 import com.spdb.build.gef.model.line.AbstractConnectionModel;
 
+/**
+ * service连线策略
+ * @author exphuhong
+ *
+ */
 public class ServiceGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy{
 
 	@Override
@@ -27,7 +32,12 @@ public class ServiceGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy{
 		request.setStartCommand(command);
 		return command;
 	}
-
+	
+	
+	
+	/**
+	 * 连线重定向源
+	 */
 	@Override
 	protected Command getReconnectSourceCommand(ReconnectRequest request) {
 		ReconnectSoourceCommand command = new ReconnectSoourceCommand((
@@ -38,6 +48,9 @@ public class ServiceGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy{
 		return command;
 	}
 
+	/**
+	 * 连线重定向目标
+	 */
 	@Override
 	protected Command getReconnectTargetCommand(ReconnectRequest request) {
 		ReconnectTargetCommand command = new ReconnectTargetCommand((

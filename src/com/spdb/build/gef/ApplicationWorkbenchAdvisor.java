@@ -19,11 +19,17 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
         return new ApplicationWorkbenchWindowAdvisor(configurer);
     }
     
+	/**
+	 * 指定工作台的初始透视图
+	 */
     @Override
 	public String getInitialWindowPerspectiveId() {
 		return PERSPECTIVE_ID;
 	}
     
+    /**
+     * 第一个窗口打开之后但启动事件循环之前调用
+     */
     @Override
     public void postStartup() {
     	IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();

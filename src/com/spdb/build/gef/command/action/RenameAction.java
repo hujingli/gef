@@ -17,6 +17,11 @@ import org.eclipse.ui.actions.ActionFactory;
 import com.spdb.build.gef.model.Node;
 import com.spdb.build.gef.wizard.RenameWizard;
 
+/**
+ * 重命名action  { @link MyGraphicalEditor#createActions}方法中注册
+ * @author exphuhong
+ *
+ */
 public class RenameAction extends SelectionAction{
 
 	public RenameAction(IWorkbenchPart part) {
@@ -38,6 +43,7 @@ public class RenameAction extends SelectionAction{
 		setText("重命名...");
 		setToolTipText("重命名");
 		
+		// 设置action的id便于通过id进行搜索对应的action
 		setId(ActionFactory.RENAME.getId());
 		
 		Optional<ImageDescriptor> icon = ResourceLocator.imageDescriptorFromBundle("com.spdb.build.gef", "icons/rename.png");
@@ -48,12 +54,20 @@ public class RenameAction extends SelectionAction{
 		setEnabled(false);
 	}
 	
+	/**
+	 * 创建重命名的命令
+	 * @param name
+	 * @return
+	 */
 	public Command createRenameCommand(String name) {
+		// 创建重命名request在对应的policy中进行调用 
 		Request renameReq = new Request("rename");
 		HashMap<String, String> reqData = new HashMap<String, String>();
 		reqData.put("newName", name);
 		renameReq.setExtendedData(reqData);
-		
+		if (getSelectedObjects().isEmpty()) {
+			return null;
+		}
 		EditPart object = (EditPart) getSelectedObjects().get(0);
 		Command cmd = object.getCommand(renameReq);
 		

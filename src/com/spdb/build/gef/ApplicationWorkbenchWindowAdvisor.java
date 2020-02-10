@@ -12,17 +12,25 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
         super(configurer);
     }
     
+    /**
+     * 1.创建一个新的action bar advisor
+     *      指定由ApplicationActionBarAdvisor来配置窗口的操作条。
+     */
     @Override
     public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
         return new ApplicationActionBarAdvisor(configurer);
     }
     
+    
+    /**
+     * 窗口打开之前调用
+     */
     @Override
     public void preWindowOpen() {
         IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
         configurer.setInitialSize(new Point(400, 300));
         configurer.setShowCoolBar(true);
         configurer.setShowStatusLine(false);
-        configurer.setTitle("Hello RCP"); //$NON-NLS-1$
+        configurer.setTitle("企业管理界面"); //$NON-NLS-1$
     }
 }

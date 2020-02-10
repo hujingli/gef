@@ -9,7 +9,10 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.actions.ActionFactory;
 
 /**
- * 环境菜单
+ * 环境菜单 基于鼠标右键
+ * 
+ * 需要将环境菜单配置在想应用的地方 { @link MyGraphicalEditor#configureGraphicalViewer()}
+ * { @link MyGraphicalEditor OutlinePage#init()}
  * 
  * @author exphuhong
  *
@@ -23,6 +26,9 @@ public class AppContextMenuProvider extends ContextMenuProvider {
 		setActionRegistry(registry);
 	}
 
+	/**
+	 * 添加右键中具体的操作
+	 */
 	@Override
 	public void buildContextMenu(IMenuManager menu) {
 		GEFActionConstants.addStandardActionGroups(menu);

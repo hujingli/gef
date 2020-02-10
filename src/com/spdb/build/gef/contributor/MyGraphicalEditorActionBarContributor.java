@@ -14,6 +14,11 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.RetargetAction;
 
+/**
+ * 工具栏
+ * @author exphuhong
+ *
+ */
 public class MyGraphicalEditorActionBarContributor extends ActionBarContributor {
 
 	/**
@@ -22,10 +27,12 @@ public class MyGraphicalEditorActionBarContributor extends ActionBarContributor 
 	@Override
 	protected void buildActions() {
 
+		// 添加复制粘贴
 		IWorkbenchWindow iww = getPage().getWorkbenchWindow();
 		addRetargetAction((RetargetAction)ActionFactory.COPY.create(iww));
 		addRetargetAction((RetargetAction)ActionFactory.PASTE.create(iww));
 		
+		// 添加撤销和恢复
 		addRetargetAction(new UndoRetargetAction());
 		addRetargetAction(new RedoRetargetAction());
 		
@@ -45,6 +52,8 @@ public class MyGraphicalEditorActionBarContributor extends ActionBarContributor 
 
 	/**
 	 * 为undo/redo添加控制action
+	 * 
+	 * 
 	 */
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		toolBarManager.add(getAction(ActionFactory.UNDO.getId()));
@@ -58,6 +67,7 @@ public class MyGraphicalEditorActionBarContributor extends ActionBarContributor 
 		toolBarManager.add(getAction(GEFActionConstants.ZOOM_OUT));
 		toolBarManager.add(new ZoomComboContributionItem(getPage()));
 		
+		// 添加复制粘贴
 		toolBarManager.add(getAction(ActionFactory.COPY.getId()));
 		toolBarManager.add(getAction(ActionFactory.PASTE.getId()));
 	}

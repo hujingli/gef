@@ -17,6 +17,12 @@ import com.spdb.build.gef.editpart.ServiceEditpart;
 import com.spdb.build.gef.figure.EmployeeFigure;
 import com.spdb.build.gef.figure.ServiceFigure;
 
+/**
+ * 调用不通模型的ChangeLayoutCommand {@link EmployeeChangeLayoutCommand.class ServiceChangeLayoutCommand.class}
+ * 在editpart中被安装 {@link ServiceEditpart#createEditPolicies()}
+ * @author exphuhong
+ *
+ */
 public class AppEditLayoutPolicy extends XYLayoutEditPolicy {
 
 	@Override
@@ -38,6 +44,10 @@ public class AppEditLayoutPolicy extends XYLayoutEditPolicy {
 		return command;
 	}
 
+	/**
+	 * 返回新建模型的命令
+	 * {@link ServiceCreateCommand EmployeeCreateCommand}
+	 */
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {
 		if (request.getType() == REQ_CREATE && getHost() instanceof EnterpriseEditPart) {

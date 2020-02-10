@@ -16,25 +16,36 @@ import com.spdb.build.gef.editpolicy.AppEditLayoutPolicy;
 import com.spdb.build.gef.editpolicy.AppRenamePolicy;
 import com.spdb.build.gef.editpolicy.ServiceGraphicalNodeEditPolicy;
 import com.spdb.build.gef.figure.ServiceFigure;
-import com.spdb.build.gef.model.Enterprise;
 import com.spdb.build.gef.model.Node;
 import com.spdb.build.gef.model.Service;
 
 public class ServiceEditpart extends AppAbstractEditPart implements NodeEditPart{
 
+	/**
+	 * 创建模型对应的图像
+	 */
 	@Override
 	protected IFigure createFigure() {
 		return new ServiceFigure();
 	}
 
+	/**
+	 * 注册命令
+	 */
 	@Override
 	protected void createEditPolicies() {
+		// 修改布局
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
+		
+		// 删除
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
 		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ServiceGraphicalNodeEditPolicy());
 	}
 
+	/**
+	 * 刷新视图
+	 */
 	protected void refreshVisuals() {
 		ServiceFigure  figure = (ServiceFigure)getFigure();
 		Service model= (Service) getModel();
@@ -50,6 +61,10 @@ public class ServiceEditpart extends AppAbstractEditPart implements NodeEditPart
 		return ((Service)getModel()).getChildrenArray();
 		
 	}
+	
+	/**
+	 * 属性改变监听操作。 处理fire过来的监听事件
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(evt.getPropertyName().equals(Node.PROPERTY_LAYOUT)) {

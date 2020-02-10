@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.ui.actions.SelectionAction;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
@@ -12,9 +11,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 
 import com.spdb.build.gef.command.CopyNodeCommand;
-import com.spdb.build.gef.editpart.AppAbstractEditPart;
 import com.spdb.build.gef.model.Node;
 
+/**
+ * 节点复制action  { @link MyGraphicalEditor#createActions}方法中注册
+ * @author exphuhong
+ *
+ */
 public class CopyNodeAction extends SelectionAction {
 
 	public CopyNodeAction(IWorkbenchPart part) {
@@ -22,11 +25,16 @@ public class CopyNodeAction extends SelectionAction {
 		setLazyEnablementCalculation(true);
 	}
 
+	/**
+	 * 初始化
+	 */
 	@Override
 	protected void init() {
 		super.init();
 		ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
 		setText("复制");
+		
+		// 设置action的id
 		setId(ActionFactory.COPY.getId());
 		
 		setHoverImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
@@ -35,6 +43,7 @@ public class CopyNodeAction extends SelectionAction {
 		setEnabled(false);
 		
 	}
+	
 	
 	private Command createCopyCommand(List<Object> selectObjects) {
 		if (selectObjects == null || selectObjects.isEmpty()) {

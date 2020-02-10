@@ -7,7 +7,7 @@ import com.spdb.build.gef.model.Enterprise;
 import com.spdb.build.gef.model.Service;
 
 /**
- * 新建service命令
+ * 新建service命令  { @link AppEditLayoutPolicy#getCreateCommand } 中 进行调用
  * 
  * @author exphuhong
  *

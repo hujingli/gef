@@ -12,7 +12,7 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import com.spdb.build.gef.model.propertysource.NodePropertySource;
 
 /**
- * 插件中所有模型的父类
+ * 插件中所有节点模型的父类 实现IAdaptable 是为了可以使用属性源
  * @author huh20
  *
  */
@@ -82,6 +82,7 @@ public class Node implements IAdaptable{
 		Rectangle oldLayout = this.layout;
 		this.layout = newLayout;
 		
+		// 模型布局改变之后传递一个监听事件给editpart {@link ServiceEditpart}
 		getListeners().firePropertyChange(PROPERTY_LAYOUT, oldLayout, newLayout);
 	}
 	

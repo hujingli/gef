@@ -26,6 +26,7 @@ public class Service extends Node {
 	private int etage;
 	private Color color;
 	
+	// 保存和操作连线
 	private List inputs = new ArrayList();
 	private List outputs = new ArrayList();
 

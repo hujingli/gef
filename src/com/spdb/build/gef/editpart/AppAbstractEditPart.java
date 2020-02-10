@@ -29,7 +29,7 @@ public abstract class AppAbstractEditPart extends AbstractGraphicalEditPart impl
 	}
 	
 	/**
-	 * 处理图形元素双击
+	 * 处理图形元素双击  双击发送的request没有到policy而是直接被此方法进行处理
 	 */
 	@Override
 	public void performRequest(Request req) {

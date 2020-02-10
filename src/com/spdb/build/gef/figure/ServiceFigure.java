@@ -20,6 +20,10 @@ public class ServiceFigure extends Figure{
 	private Label labelName = new Label();
 	private Label labelEtage = new Label();
 
+	
+	/**
+	 * 构造方法，新建图像的时候进行布局，界面等设置。
+	 */
 	public ServiceFigure() {
 		XYLayout layout = new XYLayout();
 		setLayoutManager(layout);

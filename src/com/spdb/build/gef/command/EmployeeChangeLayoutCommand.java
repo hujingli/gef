@@ -4,6 +4,11 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.spdb.build.gef.model.Employee;
 
+/**
+ * 在{@link AppEditLayoutPolicy.class} 类中被调用
+ * @author exphuhong
+ *
+ */
 public class EmployeeChangeLayoutCommand extends AbstractLayoutCommand{
 
 	private Employee model;

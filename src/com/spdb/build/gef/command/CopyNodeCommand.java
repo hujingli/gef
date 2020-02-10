@@ -11,6 +11,12 @@ import com.spdb.build.gef.model.Employee;
 import com.spdb.build.gef.model.Node;
 import com.spdb.build.gef.model.Service;
 
+/**
+ * 剪切命令
+ * 对应的action { @link CopyNodeAction} 对应的
+ * @author exphuhong
+ *
+ */
 public class CopyNodeCommand extends Command{
 
 	private List<Node> list = new ArrayList<Node>();

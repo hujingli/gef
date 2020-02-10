@@ -9,6 +9,11 @@ import com.spdb.build.gef.model.Node;
 import com.spdb.build.gef.model.Service;
 import com.spdb.build.gef.model.line.AbstractConnectionModel;
 
+/**
+ * 删除命令 由 {@link AppDeletePolicy.class}创建调用
+ * @author exphuhong
+ *
+ */
 public class DeleteCommand extends Command{
 
 	private Node model;

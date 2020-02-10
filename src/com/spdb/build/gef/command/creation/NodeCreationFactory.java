@@ -7,6 +7,7 @@ import com.spdb.build.gef.model.Service;
 
 /**
  * 用于创建依赖于环境新的对象实体
+ * 在 { @link MyGraphicalEditor#getPaletteRoot()}方法中进行调用
  * @author exphuhong
  *
  */
@@ -18,6 +19,10 @@ public class NodeCreationFactory implements CreationFactory{
 		this.template = t;
 	}
 	
+	
+	/**
+	 * 返回需要创建的新的对象
+	 */
 	@Override
 	public Object getNewObject() {
 		if (template == null) {
@@ -37,6 +42,7 @@ public class NodeCreationFactory implements CreationFactory{
 		return null;
 	}
 
+	
 	@Override
 	public Object getObjectType() {
 		return template;

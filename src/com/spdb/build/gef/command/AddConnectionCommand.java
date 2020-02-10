@@ -5,6 +5,11 @@ import org.eclipse.gef.commands.Command;
 import com.spdb.build.gef.model.Service;
 import com.spdb.build.gef.model.line.AbstractConnectionModel;
 
+/**
+ * 新建连线命令 { @link ServiceGraphicalNodeEditPolicy#getConnectionCompleteCommand和getConnectionCreateCommand}中创建
+ * @author exphuhong
+ *
+ */
 public class AddConnectionCommand extends Command{
 
 	private AbstractConnectionModel connectionModel;
