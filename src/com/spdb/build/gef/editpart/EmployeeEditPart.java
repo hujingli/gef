@@ -32,12 +32,14 @@ public class EmployeeEditPart extends AppAbstractEditPart {
 	
 	// 刷新视图
 	protected void refreshVisuals() {
+		
 		EmployeeFigure  figure = (EmployeeFigure)getFigure();
 		Employee model= (Employee) getModel();
-		
+//		
 		figure.setName(model.getName());
-		figure.setFirstName(model.getPrenom());
+//		figure.setFirstName(model.getPrenom());
 		figure.setLayout(model.getLayout());
+//		super.refreshVisuals();
 		
 	}
 	

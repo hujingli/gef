@@ -1,5 +1,6 @@
 package com.spdb.build.gef.model.line;
 
+import com.spdb.build.gef.model.Node;
 import com.spdb.build.gef.model.Service;
 
 /**
@@ -7,7 +8,7 @@ import com.spdb.build.gef.model.Service;
  * @author exphuhong
  *
  */
-public abstract class AbstractConnectionModel {
+public abstract class AbstractConnectionModel extends Node{
 
 	private Service src;
 	private Service target;

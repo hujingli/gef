@@ -34,6 +34,8 @@ public class RenameWizard  extends Wizard{
 		
 		// 添加向导页面
 		addPage(new RenamePage(PAGE_NAME,oldName));
+		addPage(new RenamePage(PAGE_NAME+"1",oldName));
+		addPage(new RenamePage(PAGE_NAME+"2",oldName));
 	}
 	
 	public String getRenameValue() {

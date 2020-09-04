@@ -39,8 +39,12 @@ public class ServiceEditpart extends AppAbstractEditPart implements NodeEditPart
 		
 		// 删除
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
+		
+		// 重命名
 		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
+		// 连线
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ServiceGraphicalNodeEditPolicy());
+		
 	}
 
 	/**
@@ -124,8 +128,6 @@ public class ServiceEditpart extends AppAbstractEditPart implements NodeEditPart
 	protected List getModelTargetConnections() {
 		return ((Service)getModel()).getInputs();
 	}
-	
-	
 	
 	
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPolicy;
 
+import com.spdb.build.gef.editpolicy.AppDeleteConnectionPolicy;
 import com.spdb.build.gef.editpolicy.AppDeletePolicy;
 import com.spdb.build.gef.editpolicy.AppEditLayoutPolicy;
 import com.spdb.build.gef.figure.EnterpriseFigure;
@@ -24,6 +25,7 @@ public class EnterpriseEditPart extends AppAbstractEditPart{
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
+
 	}
 	
 	protected void refreshVisuals() {
@@ -33,6 +35,7 @@ public class EnterpriseEditPart extends AppAbstractEditPart{
 		figure.setName(model.getName());
 		figure.setAddress(model.getAddress());
 		figure.setCapital(model.getCapital());
+		
 		
 	}
 	

@@ -27,8 +27,8 @@ public class Service extends Node {
 	private Color color;
 	
 	// 保存和操作连线
-	private List inputs = new ArrayList();
-	private List outputs = new ArrayList();
+	private List<AbstractConnectionModel> inputs = new ArrayList<AbstractConnectionModel>();
+	private List<AbstractConnectionModel> outputs = new ArrayList<AbstractConnectionModel>();
 
 	private Color createRandomColor() {
 		return new Color(null, new Double(Math.random() * 128).intValue() + 128,

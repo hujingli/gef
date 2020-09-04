@@ -7,4 +7,5 @@ package com.spdb.build.gef.model.line;
  */
 public class ArrowConnectioinModel extends AbstractConnectionModel{
 
+	
 }
